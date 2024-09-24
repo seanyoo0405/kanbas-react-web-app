@@ -71,11 +71,10 @@ export default function Lab1() {
                 </ul>
                 Your favorite books (in no particular order)
                 <ul id="wd-your-books">
-                    <li>Dune</li>
-                    <li>Lord of the Rings</li>
-                    <li>Ender's Game</li>
-                    <li>Red Mars</li>
-                    <li>The Forever War</li>
+                    <li>Never Let Me Go</li>
+                    <li>All the Light we Cannot See</li>
+                    <li>Norwegen Wood</li>
+                    <li>Dracula</li>
                 </ul>
 
             </div>
