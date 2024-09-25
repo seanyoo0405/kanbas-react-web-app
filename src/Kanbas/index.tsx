@@ -26,6 +26,13 @@ export default function Kanbas() {
                     </td>
                 </tr>
             </table>
+            <div id="wd-github">
+                <a href="https://github.com/seanyoo0405/kanbas-react-web-app"
+                    id="wd-github" target="_blank">My Github</a><br />
+            </div >
+            <h2>Name: Sean Yoo</h2>
+            <h2>Section: 3:25 - 5:05 T/F </h2>
         </div >
+
     );
 }
