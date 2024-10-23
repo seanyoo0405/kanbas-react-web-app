@@ -3,8 +3,12 @@ import { BsClipboard2Check } from "react-icons/bs";
 import AssignmentButtons from "./AssignmentButtons";
 import SubassignmentButtons from "./SubassignmentButtons";
 import AssignmentControls from "./AssignmentControls";
+import { useParams } from "react-router";
+import * as db from "../../Database";
 
 export default function Assignments() {
+    const assignments = db.assignments;
+    const { cid } = useParams();
     return (
         <div>
             <AssignmentControls /><br /><br /><br /><br />
@@ -16,75 +20,23 @@ export default function Assignments() {
                         <AssignmentButtons />
                     </div>
                     <ul className="wd-subassignment list-group rounded-0">
+                    {assignments
+          .filter((assignments) => assignments.course === cid)
+          .map((assignments) => (
                         <li className="wd-subassignment list-group-item p-3 ps-1">
                             <BsGripVertical className="me-2 fs-3" />
                             <BsClipboard2Check className="s"/>
                             <a className="wd-assignment-link"
                                 href="#/Kanbas/Courses/1234/Assignments/123">
-                                A1 - ENV + HTML
+                                {assignments.title}
                             </a>
-                            <div className="wd-assignment-description"> Multiple Modules | Not available until May 6 at 12:00am |</div>
-                            <div className="wd-assignment-description"> Due May 13 at 11:59pm | 100pts </div>
+                            <div className="wd-assignment-description"> Multiple Modules | Not available until {assignments.available} |</div>
+                            <div className="wd-assignment-description"> Due {assignments.due} | {assignments.points} pts </div>
                             <SubassignmentButtons />
                         </li>
-                        <li className="wd-subassignment list-group-item p-3 ps-1">
-                            <BsGripVertical className="me-2 fs-3" />
-                            <BsClipboard2Check className="s"/>
-                            <a className="wd-assignment-link"
-                                href="#/Kanbas/Courses/1234/Assignments/124">
-                                A2 - CSS + BOOTSTRAP
-                            </a>
-                            <div className="wd-assignment-description"> Multiple Modules | Not available until May 13 at 12:00am |</div>
-                            <div className="wd-assignment-description"> Due May 20 at 11:59pm | 100pts </div>
-                            <SubassignmentButtons /></li>
-                        <li className="wd-subassignment list-group-item p-3 ps-1">
-                            <BsGripVertical className="me-2 fs-3" />
-                            <BsClipboard2Check className="s"/>
-                            <a className="wd-assignment-link"
-                                href="#/Kanbas/Courses/1234/Assignments/125">
-                                A3 - JAVASCRIPT + REACT
-                            </a>
-                            <div className="wd-assignment-description"> Multiple Modules | Not available until May 20 at 12:00am |</div>
-                            <div className="wd-assignment-description"> Due May 27 at 11:59pm | 100pts </div>
-                            <SubassignmentButtons /></li>
+                        ))}                        
                     </ul>
                 </li>
             </ul> </div>
     );
 }
-
-{/* <div id="wd-assignments">
-       <input id="wd-search-assignment"
-    //            placeholder="Search for Assignments" />
-    //     <button id="wd-add-assignment-group">+ Group</button>
-    //     <button id="wd-add-assignment">+ Assignment</button>
-    //     <h3 id="wd-assignments-title">
-    //       ASSIGNMENTS 40% of Total <button>+</button>
-    //     </h3>
-    //     <ul id="wd-assignment-list">
-    //       <li className="wd-assignment-list-item">
-    //         <a className="wd-assignment-link"
-    //           href="#/Kanbas/Courses/1234/Assignments/123">
-    //           A1 - ENV + HTML
-    //         </a>
-    //         <div className= "wd-assignment-description"> Multiple Modules | Not available until May 6 at 12:00am |</div>
-    //         <div className= "wd-assignment-description"> Due May 13 at 11:59pm | 100pts </div>  
-    //       </li>
-    //       <li className="wd-assignment-list-item">
-    //       <a className="wd-assignment-link"
-    //           href="#/Kanbas/Courses/1234/Assignments/124">
-    //           A2 - CSS + BOOTSTRAP
-    //         </a>
-    //         <div className= "wd-assignment-description"> Multiple Modules | Not available until May 13 at 12:00am |</div>
-    //         <div className= "wd-assignment-description"> Due May 20 at 11:59pm | 100pts </div>
-    //       </li>
-    //       <li className="wd-assignment-list-item">
-    //       <a className="wd-assignment-link"
-    //           href="#/Kanbas/Courses/1234/Assignments/125">
-    //           A3 - JAVASCRIPT + REACT
-    //         </a>
-    //         <div className= "wd-assignment-description"> Multiple Modules | Not available until May 20 at 12:00am |</div>
-    //         <div className= "wd-assignment-description"> Due May 27 at 11:59pm | 100pts </div>
-    //       </li>
-    //     </ul>
-    //   </div> */}
