@@ -1,24 +1,38 @@
-import CoursesNavigation from "./Navigation";
-import Modules from "./Modules";
-import { Navigate, Route, Routes } from "react-router";
+import { Routes, Route, Navigate, useParams } from "react-router";
 import Home from "./Home";
+import Modules from "./Modules";
+import CoursesNavigation from "./Navigation";
+import { courses } from "../Database";
+import { FaAlignJustify } from "react-icons/fa6";
+import PeopleTable from "./People/Table";
+
 export default function Courses() {
+  const { cid } = useParams();
+  const course = courses.find((course) => course._id === cid);
   return (
     <div id="wd-courses">
-      <h2>Course 1234</h2><hr />
-      <table>
-        <tr>
-          <td valign="top"><CoursesNavigation /></td>
-          <td valign="top">
-            <Routes>
-              <Route path="/" element={<Navigate to="Home" />} />
-              <Route path="Home" element={<h2><Home /></h2>} />
-              <Route path="Modules" element={<h2><Modules /></h2>} />
-              <Route path="Assignments" element={<h2>Assignments</h2>} />
-              <Route path="Assignments/:aid" element={<h2>Assignment Editor</h2>} />
-              <Route path="People" element={<h2>People</h2>} />
-            </Routes>
-          </td>
-        </tr>
-      </table>
-    </div>);}
+      <h2 className="text-danger">
+        <FaAlignJustify className="me-4 fs-4 mb-1" />
+        {course && course.name}
+      </h2>
+      <div className="d-flex">
+        <div>
+          <CoursesNavigation />
+        </div>
+        <div className="flex-fill">
+          <Routes>
+            <Route path="/" element={<Navigate to="Home" />} />
+            <Route path="Home" element={<Home />} />
+            <Route path="Modules" element={<Modules />} />
+            <Route path="Assignments" element={<h2>Assignments</h2>} />
+            <Route
+              path="Assignments/:aid"
+              element={<h2>Assignment Editor</h2>}
+            />
+            <Route path="People" element={<PeopleTable />} />
+          </Routes>
+        </div>
+      </div>
+    </div>
+  );
+}
