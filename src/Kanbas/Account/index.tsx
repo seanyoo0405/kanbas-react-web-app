@@ -24,6 +24,10 @@ export default function Account() {
             </Routes>
           </td>
         </tr>
+        https://github.com/seanyoo0405/kanbas-react-web-app/tree/a3 <br></br>
+        I lost a lot of my work becaused i messed up while trying to merge my code 
+        between branches <br></br>
+        so some parts might be different from last assignment
       </table>
     </div>
   );
