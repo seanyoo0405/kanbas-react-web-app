@@ -4,6 +4,7 @@ import Signin from "./Signin";
 import Signup from "./Signup";
 import AccountNavigation from "./Navigation";
 import { useSelector } from "react-redux";
+import Users from "./Users";
 export default function Account() {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   return (
@@ -25,7 +26,7 @@ export default function Account() {
             </Routes>
           </td>
         </tr>
-        https://github.com/seanyoo0405/kanbas-react-web-app/tree/a5 <br></br>
+   <br></br>
       </table>
     </div>
   );
